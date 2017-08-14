@@ -1,7 +1,7 @@
 import React from 'react'
 import Person from './Person'
 
-export default const Message = (props) => {
+export default function Message (props) {
   return (
     <div>
       <Person imageData={props.message.sender}/>

@@ -7,7 +7,7 @@ let styles = {
   height: "300px"
 }
 
-export default const Person = (props) => {
+export default function Person (props) {
   return (
     <img style={styles} src={props.imageData.url} alt={props.imageData.name}/>
   )
