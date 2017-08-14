@@ -7,12 +7,12 @@ module.exports = {
 }
 
 function getMessages (connection) {
-  return 
+  return
 }
 
-function createmessage (message, conn) { 
-const db = conn || connection
-db('message')
+function createmessage (message, conn) {
+  const db = conn || connection
+  db('message')
 }
 
 function getPeople () { }
