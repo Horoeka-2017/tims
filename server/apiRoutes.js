@@ -17,8 +17,13 @@ router.get('/messages', (req, res) => {
   //     }
   //   })
 })
+
 router.post('/messages', (req, res) => {
 
+})
+
+router.get('/people', (req, res) => {
+  
 })
 
 module.exports = router
