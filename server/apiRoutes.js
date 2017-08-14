@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.use(bodyParser.json())
 
-router.get('/subreddit/:subreddit', (req, res) => {
+router.get('/messages', (req, res) => {
   request
     .get(`http://www.reddit.com/r/${req.params.subreddit}.json`)
     .end((err, result) => {
