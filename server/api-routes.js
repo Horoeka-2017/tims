@@ -1,9 +1,9 @@
 const express = require('express')
+const router = express.Router()
 const bodyParser = require('body-parser')
 
-const router = express.Router()
-
 const db = require('./db')
+
 const mockMessageData = [{
   sender: { id: 1, name: 'some', photo: 'stuff' },
   recipient: { id: 2, name: 'in', photo: 'here' },
@@ -28,7 +28,7 @@ router.post('/messages', (req, res) => {
   db.createMessage(message)
     .end((err, res) => {
       if (err) {
-        res.status(500).err.message
+        res.status(500).send(err.message)
       } else {
         res.status(201).send('Message Added')
       }
