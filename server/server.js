@@ -1,7 +1,7 @@
 var path = require('path')
 var express = require('express')
 
-var apiRoutes = require('./apiRoutes')
+var apiRoutes = require('./api-routes')
 var server = express()
 
 server.use(express.static(path.join(__dirname, '../public')))
