@@ -1,11 +1,12 @@
 import React from 'react'
 import Person from './Person'
 
-const Message = () => {
+export default const Message = (props) => {
   return (
     <div>
-      <img src="person1" className="sender"/>
-      <img className="content"/>
-      <img src="person2" className="receiver"/>
-    </div>)
+      <Person imageData={props.message.sender}/>
+      <img src={props.message.src}/>
+      <Person imageData={props.message.receiver}/>
+    </div>
+  )
 }
