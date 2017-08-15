@@ -38,9 +38,9 @@ function formattedMessages (messages) {
         photo: message.senderPhoto
       },
       recipient: {
-        id: message.reciepientId,
+        id: message.recipientId,
         name: message.recipientName,
-        photo: message.reciepientPhoto
+        photo: message.recipientPhoto
       },
       imageUrl: message.imageUrl,
       dateTime: message.dateTime
