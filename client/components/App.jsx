@@ -9,7 +9,7 @@ export default class App extends React.Component {
   render () {
     return (
       <div className='app'>
-        <MessageList data={this.state.messageData} />
+        <MessageList messages={this.state.messageData} />
       </div>
     )
   }
