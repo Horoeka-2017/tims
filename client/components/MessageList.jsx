@@ -1,28 +1,28 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import Message from './Message'
 import {connect} from 'react-redux'
-
-export default function MessageListx (props) {
-  return (
-    props.data.map(messageData => {
-      return <Message message={messageData}/>
-    })
-  )
-}
-
-// new function with react
-
 
 function MessageList ({messages}) {
   return (
     <div>
       {messages.map((message, i) => {
-        return (<Message
-                    key = {i}
-                    message={message}
-                    />
-               )
-
-      })}
+        return <Message key = {i} message={message}/>
+        })
+      }
+    </div>
   )
 }
+
+MessageList.propTypes = {
+  messages: PropTypes.array.isRequired
+}
+
+function mapStateToProps (state) {
+  return {
+    messages: state.messages
+  }
+}
+
+export default connect(mapStateToProps)(MessageList)
