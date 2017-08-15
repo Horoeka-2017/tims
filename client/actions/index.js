@@ -31,7 +31,6 @@ export function fetchMessages () {
         if (err) {
           dispatch(showError(err.message)) // TODO implement showError action
         } else {
-          console.log(receiveMessages(res.body))
           dispatch(receiveMessages(res.body))
         }
       })
