@@ -1,8 +1,10 @@
 import React from 'react'
 
+import people from '../people.js'
+
 class NewMessage extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
     this.state = {
       sender: null,
       recipient: null
@@ -14,6 +16,7 @@ class NewMessage extends React.Component {
     const target = e.target
     const value = target.value
     const name = target.name
+
     this.setState({
       [name]: value
     })
@@ -23,18 +26,27 @@ class NewMessage extends React.Component {
     return (
       <div>
         <form>
-          <select name="sender" onChange={this.handleChange}>
-            <option value="Jane" >Jane</option>
-            <option value="Mary" >Mary</option>
-            <option value="Felicia" >Felicia</option>
-            <option value="Poppy" >Poppy</option>
-          </select>
-          <select name="recipient" onChange={this.handleChange}>
-            <option value="Jane" >Jane</option>
-            <option value="Mary" >Mary</option>
-            <option value="Felicia" >Felicia</option>
-            <option value="Poppy" >Poppy</option>
-          </select>
+              <div>
+                <select name="sender" onChange={this.handleChange}>
+                  {people.map((person) => {
+                    return (
+                      <option key={person.id} value={person.name} >{person.name}</option>
+                    )
+                  })}
+                </select>
+                <select name="recipient" onChange={this.handleChange}>
+                    return (
+                  {people.map((person) => {
+                    return (
+                    <option key={person.id} value={person.name}>{person.name}</option>
+                    )
+                  })}
+                </select>
+              </div>
+          <label>
+            Image URL:
+          <input type="text" name="image-url" onChange={this.handleChange}/>
+          </label>
         </form>
       </div>
     )
