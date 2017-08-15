@@ -7,7 +7,8 @@ class NewMessage extends React.Component {
     super()
     this.state = {
       sender: null,
-      recipient: null
+      recipient: null,
+      imageUrl: null
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -45,7 +46,7 @@ class NewMessage extends React.Component {
               </div>
           <label>
             Image URL:
-          <input type="text" name="image-url" onChange={this.handleChange}/>
+          <input type="text" name="imageUrl" onChange={this.handleChange}/>
           </label>
         </form>
       </div>
