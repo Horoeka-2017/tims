@@ -11,9 +11,11 @@ class NewMessage extends React.Component {
   }
 
   handleChange (e) {
+    const target = e.target
+    const value = target.value
+    const name = target.name
     this.setState({
-      sender: e.target.sender.value,
-      recipient: e.target.recipient.value
+      [name]: value
     })
   }
 
