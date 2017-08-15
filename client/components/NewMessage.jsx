@@ -3,7 +3,7 @@ import React from 'react'
 import people from '../people.js'
 
 const styles = {
-  borderRadius: '150px',
+  borderRadius: '50%',
   background: 'white',
   width: '300px',
   height: '300px'
@@ -16,65 +16,52 @@ class NewMessage extends React.Component {
       sender: null,
       recipient: null,
       senderPhoto: null,
-      recipientPhoto: null
+      recipientPhoto: null,
+      message: null
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleGetPhoto = this.handleGetPhoto.bind(this)
   }
-  handleGetPhoto (action, name) {
+
+  handleGetPhoto (action, id) {
+    const person = people.find((p) => p.id === Number(id))
+
     if (action === 'sender') {
-      people.map((person) => {
-        if (person.name === name) {
-          this.setState({senderPhoto: person.photo})
-        }
-      })
+      this.setState({senderPhoto: person.photo})
     } else if (action === 'recipient') {
-      people.map((person) => {
-        if (person.name === name) {
-          this.setState({recipientPhoto: person.photo})
-        }
-      })
+      this.setState({recipientPhoto: person.photo})
     }
   }
 
   handleChange (e) {
-    const target = e.target
-    const name = target.value
-    const action = target.name
+    const {name: action, value: id} = e.target
 
     this.setState({
-      [action]: name
+      [action]: id
     })
-    this.handleGetPhoto(action, name)
+    this.handleGetPhoto(action, id)
   }
   render () {
     return (
       <div>
-        <form>
-              <div>
-                <select name="sender" onChange={this.handleChange}>
-                <option value="sender">Sender</option>
-                  {people.map((person) => {
-                    return (
-                      <option key={person.id} value={person.name}>{person.name}</option>
-                    )
-                  })}
-                </select>
-                <select name="recipient" onChange={this.handleChange}>
-                <option value="recipient">Recipient</option>
-                    return (
-                  {people.map((person) => {
-                    return (
-                    <option key={person.id} value={person.name}>{person.name}</option>
-                    )
-                  })}
-                </select>
-              </div>
-          <label>
-            Image URL:
+        <div>
+          <select name="sender" onChange={this.handleChange}>
+            <option value="sender">Sender</option>
+              {people.map((person) => {
+                return <option key={person.id} value={person.id}>{person.name}</option>
+              })}
+          </select>
+          <select name="recipient" onChange={this.handleChange}>
+            <option value="recipient">Recipient</option>
+              {people.map((person) => {
+                return <option key={person.id} value={person.id}>{person.name}</option>
+              })}
+          </select>
+        </div>
+        <label>
+          Image URL:
           <input type="text" name="message" onChange={this.handleChange}/>
-          </label>
-        </form>
+        </label>
         <div>
           <img style={styles} src={this.state.senderPhoto}/>
           <img style={styles} src={this.state.message}/>

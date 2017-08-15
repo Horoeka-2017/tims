@@ -1,6 +1,7 @@
 import React from 'react'
-// import MessageList from './MessageList'
+import MessageList from './MessageList'
 import NewMessage from './NewMessage'
+
 export default class App extends React.Component {
   constructor (props) {
     super(props)
@@ -9,7 +10,7 @@ export default class App extends React.Component {
   render () {
     return (
       <div className='app'>
-        {/* <MessageList messages={this.state.messageData} /> */}
+        <MessageList messages={this.state.messageData} />
         <NewMessage />
       </div>
     )
