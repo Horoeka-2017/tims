@@ -8,9 +8,30 @@ module.exports = {
 
 function getMessages (conn) {
   const db = conn || connection
-  return db.select('*').from('messages').join('people', function () {
-    this.on('people.id', '=', 'messages.sender_Id').andOn('people.id', '=', 'messages.recipients_Id')
+  // return db.select('*').from('messages').join('people', function () {
+  //   this.on('people.id', '=', 'messages.sender_Id').andOn('people.id', '=', 'messages.recipients_Id')
+  // })
+  return db('messages')
+    .join('people as sender', 'sender.id', 'messages.sender_id')
+    .join('people as recipient', 'recipient.id', 'messages.recipient_id')
+    .select('messages.id', 'messages.image_url as imageUrl', 'messages.date_time as dateTime',
+      'sender.id as senderId', 'sender.name as senderName', 'sender.photo as senderPhoto',
+      'recipient.id as recipientId', 'recipient.name as recipientName', 'recipient.photo as recipientPhoto')
+    .then(messages => {
+      return formattedMessages(messages)
+    })
+}
+
+function formattedMessages (messages) {
+  const formattedMsg = messages.map((message) => {
+    return {
+      sender: {id: message.senderId, name: message.senderName, photo: message.senderPhoto},
+      recipient: {id: message.reciepientId, name: message.recipientName, photo: message.reciepientPhoto},
+      imageUrl: message.imageUrl,
+      dateTime: message.dateTime
+    }
   })
+  return formattedMsg
 }
 
 function createMessage (message, conn) {
