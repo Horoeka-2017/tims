@@ -1,40 +1,33 @@
 import request from 'superagent'
 
-export const SHOW_ERROR = 'SHOW_ERROR'
+export const GET_MESSAGES = 'GET_MESSAGES'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const REQUEST_POSTS = 'REQUEST_POSTS'
 
-export const requestPosts = () => {
+
+export function requestMessages() {
   return {
-    type: REQUEST_POSTS
+    type: REQUEST_MESSAGES
   }
 }
 
-export const receivePosts = (posts) => {
+export function receiveMessages (messages) {
   return {
     type: RECEIVE_POSTS,
     posts: posts.map(post => post.data)
   }
 }
 
-export const showError = (errorMessage) => {
-  return {
-    type: SHOW_ERROR,
-    errorMessage: errorMessage
-  }
-}
-
-export function fetchPosts (subreddit) {
+export function fetchMessages() {
   return (dispatch) => {
-    dispatch(requestPosts())
+    dispach(requestMessages())
     request
-      .get(`/api/v1/reddit/subreddit/${subreddit}`)
+      .get('/api/v1/messages')
       .end((err, res) => {
         if (err) {
-          dispatch(showError(err.message))
+          dispatch(showError(err.message)) // TODO implement showError action
           return
+        } else {
+          dispatch(receiveMessages(res.body))
         }
-        dispatch(receivePosts(res.body))
       })
   }
-}
