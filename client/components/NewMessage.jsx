@@ -63,12 +63,12 @@ class NewMessage extends React.Component {
               </div>
           <label>
             Image URL:
-          <input type="text" name="imageUrl" onChange={this.handleChange}/>
+          <input type="text" name="message" onChange={this.handleChange}/>
           </label>
         </form>
         <div>
           <img src={this.state.senderPhoto}/>
-          <img name="message" />
+          <img src={this.state.message}/>
           <img src={this.state.recipientPhoto}/>
         </div>
       </div>
