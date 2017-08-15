@@ -2,6 +2,13 @@ import React from 'react'
 
 import people from '../people.js'
 
+const styles = {
+  borderRadius: '150px',
+  background: 'white',
+  width: '300px',
+  height: '300px'
+}
+
 class NewMessage extends React.Component {
   constructor () {
     super()
@@ -46,13 +53,15 @@ class NewMessage extends React.Component {
         <form>
               <div>
                 <select name="sender" onChange={this.handleChange}>
+                <option value="sender">Sender</option>
                   {people.map((person) => {
                     return (
-                      <option key={person.id} value={person.name} >{person.name}</option>
+                      <option key={person.id} value={person.name}>{person.name}</option>
                     )
                   })}
                 </select>
                 <select name="recipient" onChange={this.handleChange}>
+                <option value="recipient">Recipient</option>
                     return (
                   {people.map((person) => {
                     return (
@@ -67,9 +76,9 @@ class NewMessage extends React.Component {
           </label>
         </form>
         <div>
-          <img src={this.state.senderPhoto}/>
-          <img src={this.state.message}/>
-          <img src={this.state.recipientPhoto}/>
+          <img style={styles} src={this.state.senderPhoto}/>
+          <img style={styles} src={this.state.message}/>
+          <img style={styles} src={this.state.recipientPhoto}/>
         </div>
       </div>
     )
