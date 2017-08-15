@@ -9,6 +9,6 @@ let styles = {
 
 export default function Person (props) {
   return (
-    <img style={styles} src={props.imageData.url} alt={props.imageData.name}/>
+    <img style={styles} src={props.imageData.photo} alt={props.imageData.name}/>
   )
 }
