@@ -7,6 +7,7 @@ const router = express.Router()
 
 router.use(bodyParser.json())
 
+
 router.get('/messages', (req, res) => {
   db.getMessages()
     .then(messages => {
