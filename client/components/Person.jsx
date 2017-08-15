@@ -9,6 +9,9 @@ const styles = {
 
 export default function Person (props) {
   return (
+      <div>
     <img style={styles} src={props.person.photo} alt={props.person.name}/>
+    {props.person.name}
+      </div>
   )
 }
