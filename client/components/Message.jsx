@@ -1,5 +1,8 @@
 import React from 'react'
 import Person from './Person'
+import PropTypes fro 'prop-types'
+
+
 
 export default function Message (props) {
   return (
@@ -10,3 +13,4 @@ export default function Message (props) {
     </div>
   )
 }
+
