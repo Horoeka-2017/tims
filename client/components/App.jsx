@@ -1,5 +1,6 @@
 import React from 'react'
 import MessageList from './MessageList'
+import Route from 'react-router-dom'
 
 export default class App extends React.Component {
   constructor (props) {
@@ -9,7 +10,7 @@ export default class App extends React.Component {
   render () {
     return (
       <div className='app'>
-        <MessageList messages={this.state.messageData} />
+        <Route exact path ='/' component={MessageList} messages={this.state.messageData} />
       </div>
     )
   }
