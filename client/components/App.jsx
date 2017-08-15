@@ -7,8 +7,8 @@ export default class App extends React.Component {
   render () {
     return (
       <div className='app'>
-        <LoadMessages/>
-        <MessageList/>
+        <LoadMessages />
+        <Route exact path ='/' component={MessageList}/>
       </div>
     )
   }
