@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Message from './Message'
 import { connect } from 'react-redux'
 
-function MessageList({ messages }) {
+function MessageList ({ messages }) {
   return (
     <div>
       hi
