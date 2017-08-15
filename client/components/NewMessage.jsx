@@ -8,9 +8,17 @@ class NewMessage extends React.Component {
     this.state = {
       sender: null,
       recipient: null,
-      imageUrl: null
+      senderPhoto: null
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleGetPhoto = this.handleGetPhoto.bind(this)
+  }
+  handleGetPhoto (sender) {
+    const photo = people.map((person) => {
+      if (person.name === sender) {
+        this.setState({senderPhoto: person.photo})
+      }
+    })
   }
 
   handleChange (e) {
@@ -21,8 +29,8 @@ class NewMessage extends React.Component {
     this.setState({
       [name]: value
     })
+    this.handleGetPhoto(value)
   }
-
   render () {
     return (
       <div>
@@ -49,6 +57,11 @@ class NewMessage extends React.Component {
           <input type="text" name="imageUrl" onChange={this.handleChange}/>
           </label>
         </form>
+        <div>
+          <img src={this.state.senderPhoto}/>
+          <img name="message" />
+          <img name="recipientImage"/>
+        </div>
       </div>
     )
   }
