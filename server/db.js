@@ -3,7 +3,7 @@ const config = require('../../knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-  getMessages, createmessage, getPeople
+  getMessages, createMessage, getPeople
 }
 
 function getMessages(connection) {
@@ -11,7 +11,7 @@ function getMessages(connection) {
   return db('messages').select()
 }
 
-function createmessage(message, conn) {
+function createMessage(message, conn) {
   const db = conn || connection
   return db('messages').insert([{ sender_id: message.senderId, reciepient_id: message.recipientId, image_url: message.imageUrl, date_time: new Date() }])
 }
