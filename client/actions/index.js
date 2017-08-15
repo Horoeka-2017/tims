@@ -1,7 +1,7 @@
 import request from 'superagent'
 
 export const GET_MESSAGES = 'GET_MESSAGES'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const RECEIVE_MESSAGES = 'RECEIVE_POSTS'
 export const REQUEST_MESSAGES = 'REQUEST_MESSAGES'
 
 export function requestMessages () {
@@ -12,7 +12,7 @@ export function requestMessages () {
 
 export function receiveMessages (messages) {
   return {
-    type: RECEIVE_POSTS,
+    type: RECEIVE_MESSAGES,
     messages: messages.map(post => post.data)
   }
 }
@@ -31,6 +31,7 @@ export function fetchMessages () {
         if (err) {
           dispatch(showError(err.message)) // TODO implement showError action
         } else {
+          console.log(receiveMessages(res.body))
           dispatch(receiveMessages(res.body))
         }
       })
