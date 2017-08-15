@@ -32,6 +32,7 @@ function getMessages (conn) {
 function formattedMessages (messages) {
   const formattedMsg = messages.map((message) => {
     return {
+      id: message.id,
       sender: {
         id: message.senderId,
         name: message.senderName,

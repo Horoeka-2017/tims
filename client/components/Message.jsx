@@ -5,9 +5,12 @@ import PropTypes from 'prop-types'
 class Message extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-    }
+    this.handleOnClick = this.handleOnClick.bind(this)
   }
+
+  handleOnClick (e) {
+  }
+
   render () {
     return (
     <div>
