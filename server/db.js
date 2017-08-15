@@ -6,13 +6,17 @@ module.exports = {
   getMessages, createmessage, getPeople
 }
 
-function getMessages (connection) {
-  return
-}
-
-function createmessage (message, conn) {
+function getMessages(connection) {
   const db = conn || connection
-  return db('message').insert([{ sender_id: message.senderId, reciepient_id: message.recipientId, image_url: message.imageUrl, date_time: new Date() }])
+  return db('messages').select()
 }
 
-function getPeople() { }
+function createmessage(message, conn) {
+  const db = conn || connection
+  return db('messages').insert([{ sender_id: message.senderId, reciepient_id: message.recipientId, image_url: message.imageUrl, date_time: new Date() }])
+}
+
+function getPeople(connection) {
+  const db = conn || connection
+  return db('people').select()
+}
