@@ -8,7 +8,6 @@ export default function Message (props) {
       <Person person={props.message.sender}/>
       <img src={props.message.imageUrl}/>
       <Person person={props.message.recipient}/>
-      <button type='button' value='delete'>x</button>
     </div>
   )
 }
