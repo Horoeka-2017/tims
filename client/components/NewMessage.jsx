@@ -8,28 +8,37 @@ class NewMessage extends React.Component {
     this.state = {
       sender: null,
       recipient: null,
-      senderPhoto: null
+      senderPhoto: null,
+      recipientPhoto: null
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleGetPhoto = this.handleGetPhoto.bind(this)
   }
-  handleGetPhoto (sender) {
-    const photo = people.map((person) => {
-      if (person.name === sender) {
-        this.setState({senderPhoto: person.photo})
-      }
-    })
+  handleGetPhoto (action, name) {
+    if (action === 'sender') {
+      people.map((person) => {
+        if (person.name === name) {
+          this.setState({senderPhoto: person.photo})
+        }
+      })
+    } else if (action === 'recipient') {
+      people.map((person) => {
+        if (person.name === name) {
+          this.setState({recipientPhoto: person.photo})
+        }
+      })
+    }
   }
 
   handleChange (e) {
     const target = e.target
-    const value = target.value
-    const name = target.name
+    const name = target.value
+    const action = target.name
 
     this.setState({
-      [name]: value
+      [action]: name
     })
-    this.handleGetPhoto(value)
+    this.handleGetPhoto(action, name)
   }
   render () {
     return (
@@ -60,7 +69,7 @@ class NewMessage extends React.Component {
         <div>
           <img src={this.state.senderPhoto}/>
           <img name="message" />
-          <img name="recipientImage"/>
+          <img src={this.state.recipientPhoto}/>
         </div>
       </div>
     )
