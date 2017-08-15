@@ -1,6 +1,6 @@
 import React from 'react'
 import MessageList from './MessageList'
-import {Route} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 import LoadMessages from './LoadMessages'
 
 export default class App extends React.Component {
