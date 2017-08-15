@@ -1,62 +1,62 @@
 export default [
   {
     id: 1,
-    name: 'brenna',
+    name: 'Brenna',
     photo: '/images/brenna.jpg'
   },
   {
     id: 2,
-    name: 'carmen',
+    name: 'Carmen',
     photo: '/images/carmen.jpg'
   },
   {
     id: 3,
-    name: 'carter',
+    name: 'Carter',
     photo: '/images/carter.jpg'
   },
   {
     id: 4,
-    name: 'doreen',
+    name: 'Doreen',
     photo: '/images/doreen.jpg'
   },
   {
     id: 5,
-    name: 'frederick',
+    name: 'Frederick',
     photo: '/images/frederick.jpg'
   },
   {
     id: 6,
-    name: 'jared',
+    name: 'Jared',
     photo: '/images/jared.jpg'
   },
   {
     id: 7,
-    name: 'jasper',
+    name: 'Jasper',
     photo: '/images/jasper.jpg'
   },
   {
     id: 8,
-    name: 'judy',
+    name: 'Judy',
     photo: '/images/judy.jpg'
   },
   {
     id: 9,
-    name: 'kendra',
+    name: 'Kendra',
     photo: '/images/kendra.jpg'
   },
   {
     id: 10,
-    name: 'leo',
+    name: 'Leo',
     photo: '/images/leo.jpg'
   },
   {
     id: 11,
-    name: 'rachel',
+    name: 'Rachel',
     photo: '/images/rachel.jpg'
   },
   {
     id: 12,
-    name: 'shelton',
+    name: 'Shelton',
     photo: '/images/shelton.jpg'
   }
 ]
