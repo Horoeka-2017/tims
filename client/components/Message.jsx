@@ -1,6 +1,6 @@
 import React from 'react'
 import Person from './Person'
-import PropTypes fro 'prop-types'
+import PropTypes from 'prop-types'
 
 
 
@@ -14,3 +14,6 @@ export default function Message (props) {
   )
 }
 
+Message.propTypes = {
+  message: PropTypes.object.isRequired
+}
