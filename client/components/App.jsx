@@ -10,9 +10,9 @@ export default class App extends React.Component {
     return (
       <div className='app'>
         <Route exact path ='/' component={MessageList}/>
+        <Route path='/new' component={NewMessage} />
         <Link to='/new'> Create New Message </Link>
         <LoadMessages/>
-        <Route path='/new' component={NewMessage} />
       </div>
     )
   }
