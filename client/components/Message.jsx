@@ -2,8 +2,6 @@ import React from 'react'
 import Person from './Person'
 import PropTypes from 'prop-types'
 
-
-
 export default function Message (props) {
   return (
     <div>
