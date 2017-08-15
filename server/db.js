@@ -11,12 +11,10 @@ function getMessages (conn) {
   return db('messages')
     .join('people as sender',
           'sender.id',
-          'messages.sender_id'
-          )
+          'messages.sender_id')
     .join('people as recipient',
           'recipient.id',
-          'messages.recipient_id'
-          )
+          'messages.recipient_id')
     .select('messages.id',
             'messages.image_url as imageUrl',
             'messages.date_time as dateTime',
@@ -25,8 +23,7 @@ function getMessages (conn) {
             'sender.photo as senderPhoto',
             'recipient.id as recipientId',
             'recipient.name as recipientName',
-            'recipient.photo as recipientPhoto'
-            )
+            'recipient.photo as recipientPhoto')
     .then(messages => {
       return formattedMessages(messages)
     })
