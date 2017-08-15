@@ -1,6 +1,6 @@
 import React from 'react'
 
-let styles = {
+const styles = {
   borderRadius: "150px",
   background: "white",
   width: "300px",
@@ -9,6 +9,6 @@ let styles = {
 
 export default function Person (props) {
   return (
-    <img style={styles} src={props.imageData.photo} alt={props.imageData.name}/>
+    <img style={styles} src={props.person.photo} alt={props.person.name}/>
   )
 }
