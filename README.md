@@ -10,3 +10,12 @@ After cloning this repo:
 npm i
 npm run dev
 ```
+
+## How to Run Migrations
+
+In the terminal run this command:
+
+```shell
+npm run knex migrate:latest
+npm run knex seed:run
+```
