@@ -1,17 +1,17 @@
 import React from 'react'
+import MessageList from './MessageList'
 
-import ErrorMessage from './ErrorMessage'
-import LoadSubreddit from './LoadSubreddit'
-import SubredditList from './SubredditList'
-import WaitIndicator from './WaitIndicator'
+export default class App extends React.Component {
+  constructor (props) {
+    super(props)
+    // TODO state and logic stuff
+  }
+  render () {
+    return (
+      <div className='app'>
+        <MessageList messages={this.state.messageData} />
+      </div>
+    )
+  }
+}
 
-const App = () => (
-  <div className='app'>
-    <ErrorMessage />
-    <LoadSubreddit />
-    <WaitIndicator />
-    <SubredditList />
-  </div>
-)
-
-export default App
