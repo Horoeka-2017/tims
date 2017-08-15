@@ -13,7 +13,7 @@ export function requestMessages () {
 export function receiveMessages (messages) {
   return {
     type: RECEIVE_MESSAGES,
-    messages: messages.map(post => post.data)
+    messages: messages
   }
 }
 

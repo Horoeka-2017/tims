@@ -9,7 +9,7 @@ export default function Message (props) {
     <div>
       <Person person={props.message.sender}/>
       <img src={props.message.imageUrl}/>
-      <Person person={props.message.receiver}/>
+      <Person person={props.message.recipient}/>
     </div>
   )
 }
