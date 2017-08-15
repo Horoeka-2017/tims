@@ -10,7 +10,7 @@ export default class App extends React.Component {
   render () {
     return (
       <div className='app'>
-        <Route exact path ='/' component={MessageList} messages={this.state.messageData} />
+        <Route exact path = '/' component={MessageList} messages={this.state.messageData} />
       </div>
     )
   }
