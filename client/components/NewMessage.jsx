@@ -1,28 +1,39 @@
 import React from 'react'
 
-class NewMessage extends React.Components {
+class NewMessage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       sender: null,
-      recipient: null,
-      imageUrl: null
+      recipient: null
     }
     this.handleChange = this.handleChange.bind(this)
   }
+
+  handleChange (e) {
+    this.setState({
+      sender: e.target.sender.value,
+      recipient: e.target.recipient.value
+    })
+  }
+
   render () {
     return (
       <div>
         <form>
-          <select onChange={this.handleChange}>
-            <option value={sender}>{sender}</option>
+          <select name="sender" onChange={this.handleChange}>
+            <option value="Jane" >Jane</option>
+            <option value="Mary" >Mary</option>
+            <option value="Felicia" >Felicia</option>
+            <option value="Poppy" >Poppy</option>
           </select>
-          <select onChange={this.handleChange>
-            <option value={recipient}>{recipient}</option>
+          <select name="recipient" onChange={this.handleChange}>
+            <option value="Jane" >Jane</option>
+            <option value="Mary" >Mary</option>
+            <option value="Felicia" >Felicia</option>
+            <option value="Poppy" >Poppy</option>
           </select>
-          <input type='text' name='image-url'/>
         </form>
-        <button>Submit</button>
       </div>
     )
   }
