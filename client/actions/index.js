@@ -26,7 +26,7 @@ export function addNewMessage (message) {
   }
 }
 
-function showError (errorMessage) {
+export function showError (errorMessage) {
   return {
     type: 'SHOW_ERROR',
     errorMessage: errorMessage
