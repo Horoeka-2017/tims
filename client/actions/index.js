@@ -10,7 +10,9 @@ export function requestDeleteMessage (id) {
       .delete(`/api/v1/messages/${id}`)
       .end((err, res) => {
         if (err) {
+          return (
           showError(err.message)
+          )
         }
         dispatch(fetchMessages())
       })
