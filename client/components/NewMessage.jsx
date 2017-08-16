@@ -29,14 +29,14 @@ class NewMessage extends React.Component {
     const person = this.props.people.find((p) => p.id === Number(id))
 
     if (action === 'sender') {
-      this.setState({ senderPhoto: person.photo, sender: person.name, senderId: person.id })
+      this.setState({senderPhoto: person.photo, sender: person.name, senderId: person.id})
     } else if (action === 'recipient') {
-      this.setState({ recipientPhoto: person.photo, sender: person.name, recipientId: person.id })
+      this.setState({recipientPhoto: person.photo, sender: person.name, recipientId: person.id})
     }
   }
 
   handleChange (e) {
-    const { name: action, value: id } = e.target
+    const {name: action, value: id} = e.target
 
     this.setState({
       [action]: id
