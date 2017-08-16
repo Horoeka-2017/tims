@@ -2,7 +2,6 @@
   color: red;
   font-weight: bold;
 }
-/* Message list styling */
 
 .person {
   border-radius: 50%;
@@ -25,14 +24,4 @@
 
 .message {
   border-radius: 25px;
-}
-
-/* New message styling */
-
-.newMessageStyle {
-  flex-direction: row;
-  flex-flow: wrap;
-  justify-content: center;
-  margin-top: 10px;
-  padding: 5px;
 }
