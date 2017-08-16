@@ -60,18 +60,17 @@ class NewMessage extends React.Component {
   render () {
     return (
       <div>
-        <form action="arglebargle" id="messageForm">
-          <input type="submit"/>
-        </form>
         <div>
-          <select name="sender" onChange={this.handleChange} form="messageForm" required>
-            <option value="">Sender</option>
+        </div>
+        <div>
+          <select name="" onChange={this.handleChange} required>
+            <option value="" disable="disabled">Sender</option>
             {people.map((person) => {
               return <option key={person.id} value={person.id}>{person.name}</option>
             })}
           </select>
           <select name="recipient" onChange={this.handleChange} required>
-            <option value="recipient">Recipient</option>
+            <option value="" disable="disabled">Recipient</option>
             {people.map((person) => {
               return <option key={person.id} value={person.id}>{person.name}</option>
             })}
@@ -86,7 +85,6 @@ class NewMessage extends React.Component {
           <img style={styles} src={this.state.message}/>
           <img style={styles} src={this.state.recipientPhoto}/>
         </div>
-        <button value="submit" onClick={this.handleAddMessage}>Add Message</button>
         <Link to='/'>
           <button>Back to MessageWall</button>
         </Link>
