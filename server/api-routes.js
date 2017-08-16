@@ -44,7 +44,6 @@ router.delete('/messages/:id', (req, res) => {
       res.status(200).send('Message Deleted')
     })
     .catch(err => {
-      console.log(err.message)
       res.status(500).send(err.message)
     })
 })
