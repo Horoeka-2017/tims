@@ -1,3 +1,7 @@
+body {
+  background-color: lightblue;
+}
+
 .error {
   color: red;
   font-weight: bold;
@@ -11,6 +15,7 @@
 
 .person-container {
   padding-left: 40px;
+  padding-right: 40px;
 }
 
 .message-container {
@@ -20,8 +25,22 @@
   justify-content: center;
   margin-top: 10px;
   padding: 5px;
+  align-items: center;
 }
 
 .message {
   border-radius: 25px;
+}
+
+.name {
+  text-align: center;
+}
+
+button {
+  background-color: #008CBA;
+  border-radius: 4px;
+  color: white;
+  padding: 15px 32px;
+  cursor: pointer;
+  border: none;
 }
