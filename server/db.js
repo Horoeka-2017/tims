@@ -53,7 +53,7 @@ function createMessage (message, conn) {
   const db = conn || connection
   return db('messages').insert([{
     sender_id: message.senderId,
-    reciepient_id: message.recipientId,
+    recipient_id: message.recipientId,
     image_url: message.imageUrl,
     date_time: new Date()
   }])

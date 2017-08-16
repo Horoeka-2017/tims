@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 const WaitIndicator = (props) => {
   return (
-    <div className='error'>
+    <div className='error waiting'>
       {
         props.waiting &&
         <img src='/animated-circle.gif' />

@@ -3,6 +3,8 @@ import request from 'superagent'
 export const GET_MESSAGES = 'GET_MESSAGES'
 export const RECEIVE_MESSAGES = 'RECEIVE_POSTS'
 export const REQUEST_MESSAGES = 'REQUEST_MESSAGES'
+export const ADD_MESSAGE = 'ADD_MESSAGE'
+export const SHOW_ERROR = 'SHOW_ERROR'
 
 export function requestMessages () {
   return {
@@ -17,9 +19,18 @@ export function receiveMessages (messages) {
   }
 }
 
-function showError (error) {
-  // TODO implement this function in redux
-  console.log(error)
+export function addNewMessage (message) {
+  return {
+    type: ADD_MESSAGE,
+    message: message
+  }
+}
+
+export function showError (errorMessage) {
+  return {
+    type: SHOW_ERROR,
+    errorMessage: errorMessage
+  }
 }
 
 export function fetchMessages () {
@@ -29,9 +40,25 @@ export function fetchMessages () {
       .get('/api/v1/messages')
       .end((err, res) => {
         if (err) {
-          dispatch(showError(err.message)) // TODO implement showError action
+          dispatch(showError(err.message))
         } else {
           dispatch(receiveMessages(res.body))
+        }
+      })
+  }
+}
+
+export function addMessage (message, cb) {
+  return (dispatch) => {
+    request
+      .post('/api/v1/new')
+      .send(message)
+      .end((err, res) => {
+        if (err) {
+          dispatch(showError(err.message))
+        } else {
+          dispatch(fetchMessages())
+          cb()
         }
       })
   }
