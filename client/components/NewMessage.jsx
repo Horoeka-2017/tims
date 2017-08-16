@@ -3,6 +3,7 @@ import {addMessage} from '../actions'
 import {connect} from 'react-redux'
 import {Route, Link} from 'react-router-dom'
 import people from '../people.js'
+import PropTypes from 'prop-types'
 
 const styles = {
   borderRadius: '50%',
@@ -46,6 +47,14 @@ class NewMessage extends React.Component {
     })
     this.handleGetPhoto(action, id)
   }
+  validateMessage (data) {
+    if (dat === '') {
+      console.log('no data')
+      return false
+    } else {
+      return true
+    }
+  }
 
   handleAddMessage (e) {
     const message = {
@@ -63,7 +72,7 @@ class NewMessage extends React.Component {
         <div>
         </div>
         <div>
-          <select name="" onChange={this.handleChange} required>
+          <select name="" onChange={this.handleChange} required form="messageForm">
             <option value="" disable="disabled">Sender</option>
             {people.map((person) => {
               return <option key={person.id} value={person.id}>{person.name}</option>
@@ -85,12 +94,19 @@ class NewMessage extends React.Component {
           <img style={styles} src={this.state.message}/>
           <img style={styles} src={this.state.recipientPhoto}/>
         </div>
+        <form id="messageForm">
+          <input type="submit" value="submit" onClick={this.handleAddMessage}>Add Message</input>
+        </form>
         <Link to='/'>
           <button>Back to MessageWall</button>
         </Link>
       </div>
     )
   }
+}
+
+NewMessage.propTypes = {
+  addMessage: PropTypes.func
 }
 
 const mapDispatchToProps = (dispatch) => {
