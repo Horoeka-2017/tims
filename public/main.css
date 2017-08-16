@@ -1,4 +1,46 @@
+body {
+  background-color: lightblue;
+}
+
 .error {
   color: red;
   font-weight: bold;
+}
+
+.person {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+}
+
+.person-container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 5px;
+  align-items: center;
+}
+
+.message {
+  border-radius: 25px;
+}
+
+.name {
+  text-align: center;
+}
+
+button {
+  background-color: #008CBA;
+  border-radius: 4px;
+  color: white;
+  padding: 15px 32px;
+  cursor: pointer;
+  border: none;
 }
