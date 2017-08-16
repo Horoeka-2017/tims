@@ -16,12 +16,12 @@ class Message extends React.Component {
 
   render () {
     return (
-    <div>
-      <Person person={this.props.message.sender}/>
-      <img src={this.props.message.imageUrl}/>
-      <Person person={this.props.message.recipient}/>
-      <button value='delete' onClick={this.handleOnClick}>x</button>
-    </div>
+      <div className='message-container'>
+        <Person person={this.props.message.sender}/>
+        <img src={this.props.message.imageUrl}/>
+        <Person person={this.props.message.recipient}/>
+        <button value='delete' onClick={this.handleOnClick}>x</button>
+      </div>
     )
   }
 }
