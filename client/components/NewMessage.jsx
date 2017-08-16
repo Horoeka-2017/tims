@@ -4,13 +4,6 @@ import {connect} from 'react-redux'
 
 import {getPeople, addMessage} from '../actions'
 
-const styles = {
-  borderRadius: '50%',
-  background: 'white',
-  width: '300px',
-  height: '300px'
-}
-
 class NewMessage extends React.Component {
   constructor () {
     super()
@@ -64,38 +57,45 @@ class NewMessage extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="newMessageStyle">
         <div className='title'><h1>Welcome To TIMS New Message Form</h1>
-        <h2>Add a new message with the form below</h2>
-        <p>Identify yourself as the sender, select a recipient to send a message too, upload an image and then click submit :)</p>
+          <h2>Add a new message with the form below</h2>
+          <p>Identify yourself as the sender, select a recipient to send a message too, upload an image and then click submit :)</p>
         </div>
-        <div>
-          <select name="sender" onChange={this.handleChange}>
+        <div className="select-list">
+          <select className="sender" name="sender" onChange={this.handleChange}>
             <option value="sender">Sender</option>
-              {this.props.people.map((person) => {
-                return <option key={person.id} value={person.id}>{person.name}</option>
-              })}
+            {this.props.people.map((person) => {
+              return <option key={person.id} value={person.id}>{person.name}</option>
+            })}
           </select>
-          <select name="recipient" onChange={this.handleChange}>
+          <select className="recipient" name="recipient" onChange={this.handleChange}>
             <option value="recipient">Recipient</option>
-              {this.props.people.map((person) => {
-                return <option key={person.id} value={person.id}>{person.name}</option>
-              })}
+            {this.props.people.map((person) => {
+              return <option key={person.id} value={person.id}>{person.name}</option>
+            })}
           </select>
         </div>
-        <label>
-          Image URL:
-          <input type="text" name="message" onChange={this.handleChange}/>
-        </label>
-        <div>
-          <img style={styles} src={this.state.senderPhoto}/>
-          <img style={styles} src={this.state.message}/>
-          <img style={styles} src={this.state.recipientPhoto}/>
+
+        <div className="input-image url">
+          <label>
+            <div>Image URL:</div>
+            <input className="url" type="text" name="message" onChange={this.handleChange} />
+          </label>
         </div>
-        <button value="submit" onClick={this.handleAddMessage}>Add Message</button>
-        <Link to='/'>
-          <button>Back to MessageWall</button>
-        </Link>
+
+        <div>
+          <img className="person-photo" src={this.state.senderPhoto} />
+          <img className="message-image" src={this.state.message} />
+          <img className="person-photo" src={this.state.recipientPhoto} />
+        </div>
+        <div className="btn">
+          <Link to='/'>
+            <button className="back-button">Back to MessageWall</button>
+          </Link>
+          <button className="add-message" value="submit" onClick={this.handleAddMessage}>Add Message</button>
+
+        </div>
       </div>
     )
   }
@@ -112,11 +112,10 @@ const mapDispatchToProps = (dispatch) => {
     addMessage: (message, cb) => {
       dispatch(addMessage(message, cb))
     }
-
   }
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
   return {
     people: state.people
   }

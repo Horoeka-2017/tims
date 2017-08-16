@@ -1,5 +1,10 @@
 body {
   background-color: lightblue;
+  font-family: 'Amatic SC', cursive;
+}
+
+h1 {
+  font-family: 'Quattrocento Sans', sans-serif;
 }
 
 .title{
@@ -59,4 +64,56 @@ button {
   padding: 15px 32px;
   cursor: pointer;
   border: none;
+}
+
+/* new message */
+.message-image{
+  border-radius: 25px;
+  background-color: white;
+  margin-bottom: 65px;
+}
+
+.person-photo{
+  border-radius: 50%;
+  background: white;
+  width: 300px;
+  height: 300px;
+  margin: 10px 20px 20px 20px;
+}
+
+.select-list{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.newMessageStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+  padding: 5px;
+  align-items: center;
+}
+
+.input-image {
+  margin-bottom: 20px;
+}
+
+.url {
+  width: 300px;
+}
+
+.sender {
+  margin-right: 100px;
+}
+
+.btn{
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+   margin-top: 100px;
+}
+
+.add-message {
+  margin-left: 1000px;
 }
