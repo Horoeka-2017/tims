@@ -1,72 +1,65 @@
+var test = require('ava')
 var request = require('supertest')
-var test = require('tape')
 
 var app = require('../../server/server.js')
 
 test('/messages returns status 200', function (t) {
-  const expected = 200
-
-  request(app)
+  return request(app)
     .get('/api/v1/messages')
-    .end(function (err, res) {
-      t.error(err)
-      t.equal(res.status, expected)
-      t.end()
+    .then(res => {
+      t.is(res.status, 200)
+    })
+    .catch(err => {
+      t.fail(err.message)
     })
 })
 
-test('/messages returns an object', function (t) {
-  const expected = 'object'
-
-  request(app)
-  .get('/api/v1/messages')
-  .end(function (err, res) {
-    t.error(err)
-    t.equal(typeof (res.body), expected)
-    t.end()
-  })
+test('GET /messages returns an array', function (t) {
+  return request(app)
+    .get('/api/v1/messages')
+    .then(res => {
+      t.true(res.body instanceof Array)
+    })
+    .catch(err => {
+      t.fail(err.message)
+    })
 })
 
-test('/messages post returns status 200', function (t) {
-  const expected = 201
+test('POST /messages returns status 201', function (t) {
   const message = {
     senderId: 10,
     recipientId: 10,
     imageUrl: 'string'
   }
-  request(app)
+  return request(app)
     .post('/api/v1/messages')
     .send(message)
-    .end(function (err, res) {
-      t.error(err)
-      t.equal(res.status, expected)
-      t.end()
+    .then(res => {
+      t.is(res.status, 201)
     })
-
-  test('/people returns an object', function (t) {
-    const expected = 'object'
-
-    request(app)
-        .get('/api/v1/people')
-        .end(function (err, res) {
-          t.error(err)
-          t.equal(typeof (res.body), expected)
-          t.end()
-        })
-  })
+    .catch(err => {
+      t.fail(err.message)
+    })
 })
 
-test('/messages/1 returns 200', function (t) {
-  // Arrange
-  const expected = 200
+test('GET /people returns an array', function (t) {
+  return request(app)
+    .get('/api/v1/people')
+    .then(res => {
+      t.true(res.body instanceof Array)
+    })
+    .catch(err => {
+      t.fail(err.message)
+    })
+})
 
-  // Act
-  request(app)
+test('DELETE /messages/1 returns 200', function (t) {
+  return request(app)
     .delete('/api/v1/messages/1')
-    .end(function (err, res) {
-      // Assert
-      t.error(err)
-      t.equal(res.status, expected)
-      t.end()
+    .then(res => {
+      t.is(res.status, 200)
+    })
+    .catch(err => {
+      t.fail(err.message)
     })
 })
