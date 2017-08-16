@@ -80,7 +80,7 @@ export function fetchMessages () {
 export function addMessage (message, cb) {
   return (dispatch) => {
     request
-      .post('/api/v1/new')
+      .post('/api/v1/messages')
       .send(message)
       .end((err, res) => {
         if (err) {
