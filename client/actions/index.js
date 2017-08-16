@@ -4,6 +4,19 @@ export const GET_MESSAGES = 'GET_MESSAGES'
 export const RECEIVE_MESSAGES = 'RECEIVE_POSTS'
 export const REQUEST_MESSAGES = 'REQUEST_MESSAGES'
 
+export function requestDeleteMessage (id) {
+  return (dispatch) => {
+    request
+      .delete(`/api/v1/messages/${id}`)
+      .end((err, res) => {
+        if (err) {
+          showError(err.message)
+        }
+        dispatch(fetchMessages())
+      })
+  }
+}
+
 export function requestMessages () {
   return {
     type: REQUEST_MESSAGES
