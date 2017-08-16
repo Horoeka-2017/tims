@@ -55,11 +55,10 @@ export function addMessage (message, cb) {
       .send(message)
       .end((err, res) => {
         if (err) {
-          cb(err)
           dispatch(showError(err.message))
         } else {
-          cb(null)
           dispatch(fetchMessages())
+          cb()
         }
       })
   }
