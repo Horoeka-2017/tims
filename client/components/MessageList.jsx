@@ -7,7 +7,6 @@ import {connect} from 'react-redux'
 function MessageList ({messages}) {
   return (
     <div>
-      hi
       {messages.map((message, i) => {
         return <Message key = {i} message={message}/>
         })

@@ -1,24 +1,19 @@
 import React from 'react'
+import {Image, Transformation} from 'cloudinary-react'
 
 export default class ImageUpload extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       thing: [] // do not call things thing
     }
   }
-  uploadImage () {
-    cloudinaryUrl = "http://res.cloudinary.com/djj7afphz/image/upload"
 
-  }
   render () {
     return (
-      <form method="post" enctype="multipart/form-data">
-        select image to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload"/>
-        <input type="text" name="imageName" id="imageName"/>
-        <input type="submit" value="UploadImages" name="submit"/>
-      </form>
+      <Image cloudName = "djj7afphz" publicId="shelton_h1n9as">
+        <Transformation width="600"/>
+      </Image>
     )
   }
 }
