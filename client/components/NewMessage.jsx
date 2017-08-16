@@ -1,15 +1,8 @@
 import React from 'react'
-<<<<<<< HEAD
-import { addMessage } from '../actions'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import people from '../people.js'
-=======
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-import {getPeople, addMessage} from '../actions'
->>>>>>> 511493a161b086eed39ed407d70771b881ff4cc3
+import { getPeople, addMessage } from '../actions'
 
 class NewMessage extends React.Component {
   constructor() {
@@ -65,7 +58,10 @@ class NewMessage extends React.Component {
   render() {
     return (
       <div className="newMessageStyle">
-        <h1>New Image Message</h1>
+        <div className='title'><h1>Welcome To TIMS New Message Form</h1>
+          <h2>Add a new message with the form below</h2>
+          <p>Identify yourself as the sender, select a recipient to send a message too, upload an image and then click submit :)</p>
+        </div>
         <div className="select-list">
           <select className="sender" name="sender" onChange={this.handleChange}>
             <option value="sender">Sender</option>
