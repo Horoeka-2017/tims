@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-import { getPeople, addMessage } from '../actions'
+import {getPeople, addMessage} from '../actions'
 
 class NewMessage extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       sender: null,
@@ -21,11 +21,11 @@ class NewMessage extends React.Component {
     this.handleAddMessage = this.handleAddMessage.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getPeople()
   }
 
-  handleGetPhoto(action, id) {
+  handleGetPhoto (action, id) {
     const person = this.props.people.find((p) => p.id === Number(id))
 
     if (action === 'sender') {
@@ -35,7 +35,7 @@ class NewMessage extends React.Component {
     }
   }
 
-  handleChange(e) {
+  handleChange (e) {
     const { name: action, value: id } = e.target
 
     this.setState({
@@ -44,7 +44,7 @@ class NewMessage extends React.Component {
     this.handleGetPhoto(action, id)
   }
 
-  handleAddMessage(e) {
+  handleAddMessage (e) {
     const message = {
       senderId: this.state.senderId,
       recipientId: this.state.recipientId,
@@ -55,7 +55,7 @@ class NewMessage extends React.Component {
     })
   }
 
-  render() {
+  render () {
     return (
       <div className="newMessageStyle">
         <div className='title'><h1>Welcome To TIMS New Message Form</h1>
@@ -116,7 +116,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     people: state.people
   }
