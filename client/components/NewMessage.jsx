@@ -37,14 +37,15 @@ class NewMessage extends React.Component {
   render () {
     return (
       <div className="newMessageStyle">
+        <h1>New Image Message</h1>
         <div className="select-list">
-          <select name="sender" onChange={this.handleChange}>
+          <select className="sender" name="sender" onChange={this.handleChange}>
             <option value="sender">Sender</option>
             {people.map((person) => {
               return <option key={person.id} value={person.id}>{person.name}</option>
             })}
           </select>
-          <select name="recipient" onChange={this.handleChange}>
+          <select className="recipient" name="recipient" onChange={this.handleChange}>
             <option value="recipient">Recipient</option>
             {people.map((person) => {
               return <option key={person.id} value={person.id}>{person.name}</option>

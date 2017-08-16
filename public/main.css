@@ -68,19 +68,22 @@ button {
 .select-list{
   margin-top: 20px;
   margin-bottom: 20px;
-
 }
 
 .newMessageStyle {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 200px;
+  margin-top: 100px;
   padding: 5px;
   align-items: center;
 }
 
 .input-image{
   margin-bottom: 20px;
-
 }
+
+.sender {
+  margin-right: 100px;
+}
+
