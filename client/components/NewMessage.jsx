@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Route, Link} from 'react-router-dom'
 import people from '../people.js'
 
 const styles = {
@@ -67,6 +67,9 @@ class NewMessage extends React.Component {
           <img style={styles} src={this.state.message}/>
           <img style={styles} src={this.state.recipientPhoto}/>
         </div>
+        <Link to='/'>
+          <button>Back to MessageWall</button>
+        </Link>
       </div>
     )
   }
