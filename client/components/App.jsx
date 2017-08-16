@@ -17,3 +17,5 @@ export default class App extends React.Component {
     )
   }
 }
+
+// when you click the button it gets the sender info, recipient info, message itself, and posts that to the db

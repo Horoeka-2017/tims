@@ -67,6 +67,7 @@ class NewMessage extends React.Component {
           <img style={styles} src={this.state.message}/>
           <img style={styles} src={this.state.recipientPhoto}/>
         </div>
+        <button name="submit">Add Message</button>
       </div>
     )
   }
