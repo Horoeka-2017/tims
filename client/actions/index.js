@@ -27,15 +27,13 @@ export function showError (errorMessage) {
 
 export function fetchMessages () {
   return (dispatch) => {
-    //set waiting to true
     dispatch(requestMessages())
     request
       .get('/api/v1/messages')
       .end((err, res) => {
         if (err) {
-          dispatch(showError(err.message)) // TODO implement showError action
+          dispatch(showError(err.message))
         } else {
-          //set waiting to false
           dispatch(receiveMessages(res.body))
         }
       })
