@@ -3,6 +3,7 @@ import request from 'superagent'
 export const GET_MESSAGES = 'GET_MESSAGES'
 export const RECEIVE_MESSAGES = 'RECEIVE_POSTS'
 export const REQUEST_MESSAGES = 'REQUEST_MESSAGES'
+export const ADD_MESSAGE = 'ADD_MESSAGE'
 export const SHOW_ERROR = 'SHOW_ERROR'
 
 export function requestMessages () {
@@ -15,6 +16,13 @@ export function receiveMessages (messages) {
   return {
     type: RECEIVE_MESSAGES,
     messages: messages
+  }
+}
+
+export function addNewMessage (message) {
+  return {
+    type: ADD_MESSAGE,
+    message: message
   }
 }
 
@@ -35,6 +43,22 @@ export function fetchMessages () {
           dispatch(showError(err.message))
         } else {
           dispatch(receiveMessages(res.body))
+        }
+      })
+  }
+}
+
+export function addMessage (message, cb) {
+  return (dispatch) => {
+    request
+      .post('/api/v1/new')
+      .send(message)
+      .end((err, res) => {
+        if (err) {
+          dispatch(showError(err.message))
+        } else {
+          dispatch(fetchMessages())
+          cb()
         }
       })
   }
