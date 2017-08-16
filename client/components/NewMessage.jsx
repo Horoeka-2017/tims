@@ -2,13 +2,6 @@ import React from 'react'
 
 import people from '../people.js'
 
-const styles = {
-  borderRadius: '50%',
-  background: 'white',
-  width: '300px',
-  height: '300px'
-}
-
 class NewMessage extends React.Component {
   constructor () {
     super()
@@ -44,7 +37,7 @@ class NewMessage extends React.Component {
   render () {
     return (
       <div className="newMessageStyle">
-        <div>
+        <div className="select-list">
           <select name="sender" onChange={this.handleChange}>
             <option value="sender">Sender</option>
             {people.map((person) => {
@@ -58,14 +51,18 @@ class NewMessage extends React.Component {
             })}
           </select>
         </div>
-        <label>
-          Image URL:
-          <input type="text" name="message" onChange={this.handleChange} />
-        </label>
+
+        <div className="input-image">
+          <label>
+            <div>Image URL:</div>
+            <input type="text" name="message" onChange={this.handleChange} />
+          </label>
+        </div>
+
         <div>
-          <img style={styles} src={this.state.senderPhoto} />
-          <img style={styles} src={this.state.message} />
-          <img style={styles} src={this.state.recipientPhoto} />
+          <img className="person-photo" src={this.state.senderPhoto} />
+          <img className="message-image" src={this.state.message} />
+          <img className="person-photo" src={this.state.recipientPhoto} />
         </div>
       </div>
     )
