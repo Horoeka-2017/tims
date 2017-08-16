@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {fetchMessages} from '../actions'
 
 function LoadMessages ({dispatch}) {
-    return ( <button onClick={() => dispatch(fetchMessages())}>
+    return ( <button onClick={(e) => dispatch(fetchMessages())}>
              Fetch Messages
              </button>
            )

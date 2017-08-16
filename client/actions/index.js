@@ -3,6 +3,7 @@ import request from 'superagent'
 export const GET_MESSAGES = 'GET_MESSAGES'
 export const RECEIVE_MESSAGES = 'RECEIVE_POSTS'
 export const REQUEST_MESSAGES = 'REQUEST_MESSAGES'
+export const SHOW_ERROR = 'SHOW_ERROR'
 
 export function requestMessages () {
   return {
@@ -17,13 +18,16 @@ export function receiveMessages (messages) {
   }
 }
 
-function showError (error) {
-  // TODO implement this function in redux
-  console.log(error)
+export function showError (errorMessage) {
+  return {
+    type: SHOW_ERROR,
+    errorMessage: errorMessage
+  }
 }
 
 export function fetchMessages () {
   return (dispatch) => {
+    //set waiting to true
     dispatch(requestMessages())
     request
       .get('/api/v1/messages')
@@ -31,6 +35,7 @@ export function fetchMessages () {
         if (err) {
           dispatch(showError(err.message)) // TODO implement showError action
         } else {
+          //set waiting to false
           dispatch(receiveMessages(res.body))
         }
       })
