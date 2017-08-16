@@ -1,6 +1,9 @@
 body {
   background-color: lightblue;
 }
+h1 {
+  font-family: 'Quattrocento Sans', sans-serif;
+}
 
 .error {
   color: red;
@@ -88,11 +91,25 @@ button {
   align-items: center;
 }
 
-.input-image{
+.input-image {
   margin-bottom: 20px;
+}
+
+.url {
+  width: 300px;
 }
 
 .sender {
   margin-right: 100px;
 }
 
+.btn{
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+   margin-top: 100px;
+}
+
+.add-message {
+  margin-left: 1000px;
+}

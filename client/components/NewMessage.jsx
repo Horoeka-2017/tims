@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import people from '../people.js'
 
 class NewMessage extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       sender: null,
@@ -21,7 +21,7 @@ class NewMessage extends React.Component {
     this.handleAddMessage = this.handleAddMessage.bind(this)
   }
 
-  handleGetPhoto(action, id) {
+  handleGetPhoto (action, id) {
     const person = people.find((p) => p.id === Number(id))
 
     if (action === 'sender') {
@@ -31,7 +31,7 @@ class NewMessage extends React.Component {
     }
   }
 
-  handleChange(e) {
+  handleChange (e) {
     const { name: action, value: id } = e.target
 
     this.setState({
@@ -40,7 +40,7 @@ class NewMessage extends React.Component {
     this.handleGetPhoto(action, id)
   }
 
-  handleAddMessage(e) {
+  handleAddMessage (e) {
     const message = {
       senderId: this.state.senderId,
       recipientId: this.state.recipientId,
@@ -51,7 +51,7 @@ class NewMessage extends React.Component {
     })
   }
 
-  render() {
+  render () {
     return (
       <div className="newMessageStyle">
         <h1>New Image Message</h1>
@@ -70,10 +70,10 @@ class NewMessage extends React.Component {
           </select>
         </div>
 
-        <div className="input-image">
+        <div className="input-image url">
           <label>
             <div>Image URL:</div>
-            <input type="text" name="message" onChange={this.handleChange} />
+            <input className="url" type="text" name="message" onChange={this.handleChange} />
           </label>
         </div>
 
@@ -82,10 +82,13 @@ class NewMessage extends React.Component {
           <img className="message-image" src={this.state.message} />
           <img className="person-photo" src={this.state.recipientPhoto} />
         </div>
-        <button value="submit" onClick={this.handleAddMessage}>Add Message</button>
-        <Link to='/'>
-          <button>Back to MessageWall</button>
-        </Link>
+        <div className="btn">
+          <Link to='/'>
+            <button className="back-button">Back to MessageWall</button>
+          </Link>
+          <button className="add-message" value="submit" onClick={this.handleAddMessage}>Add Message</button>
+
+        </div>
       </div>
     )
   }
