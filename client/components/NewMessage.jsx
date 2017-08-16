@@ -27,14 +27,14 @@ class NewMessage extends React.Component {
     const person = people.find((p) => p.id === Number(id))
 
     if (action === 'sender') {
-      this.setState({senderPhoto: person.photo})
+      this.setState({ senderPhoto: person.photo })
     } else if (action === 'recipient') {
-      this.setState({recipientPhoto: person.photo})
+      this.setState({ recipientPhoto: person.photo })
     }
   }
 
   handleChange (e) {
-    const {name: action, value: id} = e.target
+    const { name: action, value: id } = e.target
 
     this.setState({
       [action]: id
@@ -43,29 +43,29 @@ class NewMessage extends React.Component {
   }
   render () {
     return (
-      <div>
+      <div className="newMessageStyle">
         <div>
           <select name="sender" onChange={this.handleChange}>
             <option value="sender">Sender</option>
-              {people.map((person) => {
-                return <option key={person.id} value={person.id}>{person.name}</option>
-              })}
+            {people.map((person) => {
+              return <option key={person.id} value={person.id}>{person.name}</option>
+            })}
           </select>
           <select name="recipient" onChange={this.handleChange}>
             <option value="recipient">Recipient</option>
-              {people.map((person) => {
-                return <option key={person.id} value={person.id}>{person.name}</option>
-              })}
+            {people.map((person) => {
+              return <option key={person.id} value={person.id}>{person.name}</option>
+            })}
           </select>
         </div>
         <label>
           Image URL:
-          <input type="text" name="message" onChange={this.handleChange}/>
+          <input type="text" name="message" onChange={this.handleChange} />
         </label>
         <div>
-          <img style={styles} src={this.state.senderPhoto}/>
-          <img style={styles} src={this.state.message}/>
-          <img style={styles} src={this.state.recipientPhoto}/>
+          <img style={styles} src={this.state.senderPhoto} />
+          <img style={styles} src={this.state.message} />
+          <img style={styles} src={this.state.recipientPhoto} />
         </div>
       </div>
     )
