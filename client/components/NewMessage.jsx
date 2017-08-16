@@ -1,8 +1,8 @@
 import React from 'react'
-import {addMessage} from '../actions'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {Route, Link} from 'react-router-dom'
-import people from '../people.js'
+
+import {getPeople, addMessage} from '../actions'
 
 const styles = {
   borderRadius: '50%',
@@ -28,8 +28,12 @@ class NewMessage extends React.Component {
     this.handleAddMessage = this.handleAddMessage.bind(this)
   }
 
+  componentDidMount () {
+    this.props.getPeople()
+  }
+
   handleGetPhoto (action, id) {
-    const person = people.find((p) => p.id === Number(id))
+    const person = this.props.people.find((p) => p.id === Number(id))
 
     if (action === 'sender') {
       this.setState({senderPhoto: person.photo, sender: person.name, senderId: person.id})
@@ -57,19 +61,20 @@ class NewMessage extends React.Component {
       this.props.history.push('/')
     })
   }
+
   render () {
     return (
       <div>
         <div>
           <select name="sender" onChange={this.handleChange}>
             <option value="sender">Sender</option>
-              {people.map((person) => {
+              {this.props.people.map((person) => {
                 return <option key={person.id} value={person.id}>{person.name}</option>
               })}
           </select>
           <select name="recipient" onChange={this.handleChange}>
             <option value="recipient">Recipient</option>
-              {people.map((person) => {
+              {this.props.people.map((person) => {
                 return <option key={person.id} value={person.id}>{person.name}</option>
               })}
           </select>
@@ -92,12 +97,25 @@ class NewMessage extends React.Component {
   }
 }
 
+NewMessage.propTypes = {
+  getPeople: React.PropTypes.func,
+  people: React.PropTypes.array
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
+    getPeople: () => dispatch(getPeople()),
     addMessage: (message, cb) => {
       dispatch(addMessage(message, cb))
     }
+
   }
 }
 
-export default connect(null, mapDispatchToProps)(NewMessage)
+function mapStateToProps (state) {
+  return {
+    people: state.people
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewMessage)
