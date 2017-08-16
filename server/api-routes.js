@@ -51,4 +51,16 @@ router.get('/people', (req, res) => {
     })
 })
 
+router.delete('/messages/:id', (req, res) => {
+  const messageId = req.params.id
+
+  db.deleteMessage(messageId)
+    .then(() => {
+      res.status(200).send('Message Deleted')
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
 module.exports = router

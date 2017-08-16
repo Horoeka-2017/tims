@@ -5,7 +5,8 @@ const connection = require('knex')(config)
 module.exports = {
   getMessages,
   createMessage,
-  getPeople
+  getPeople,
+  deleteMessage
 }
 
 function getMessages (conn) {
@@ -34,6 +35,7 @@ function getMessages (conn) {
 function formattedMessages (messages) {
   const formattedMsg = messages.map((message) => {
     return {
+      id: message.id,
       sender: {
         id: message.senderId,
         name: message.senderName,
@@ -64,4 +66,11 @@ function createMessage (message, conn) {
 function getPeople (conn) {
   const db = conn || connection
   return db('people').select()
+}
+
+function deleteMessage (messageId, conn) {
+  const db = conn || connection
+  return db('messages')
+    .where('id', messageId)
+    .del()
 }
