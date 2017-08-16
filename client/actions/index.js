@@ -26,11 +26,10 @@ export function addNewMessage (message) {
   }
 }
 
-function showError (error) {
-  // TODO implement this function in redux
+function showError (errorMessage) {
   return {
-    type: 'ERROR',
-    message: error.message
+    type: 'SHOW_ERROR',
+    errorMessage: errorMessage
   }
 }
 
@@ -41,7 +40,7 @@ export function fetchMessages () {
       .get('/api/v1/messages')
       .end((err, res) => {
         if (err) {
-          dispatch(showError(err)) // TODO implement showError action
+          dispatch(showError(err.message))
         } else {
           dispatch(receiveMessages(res.body))
         }
