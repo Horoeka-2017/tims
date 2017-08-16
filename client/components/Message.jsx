@@ -1,17 +1,40 @@
 import React from 'react'
 import Person from './Person'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {requestDeleteMessage} from '../actions'
 
-export default function Message (props) {
-  return (
-    <div className='message-container'>
-      <Person person={props.message.sender}/>
-      <img className='message' src={props.message.imageUrl}/>
-      <Person person={props.message.recipient}/>
-    </div>
-  )
+class Message extends React.Component {
+  constructor (props) {
+    super(props)
+    this.handleOnClick = this.handleOnClick.bind(this)
+  }
+
+  handleOnClick (e) {
+    this.props.requestDeleteMessage(this.props.message.id)
+  }
+
+  render () {
+    return (
+      <div className='message-container'>
+        <Person person={this.props.message.sender}/>
+        <img src={this.props.message.imageUrl}/>
+        <Person person={this.props.message.recipient}/>
+        <button value='delete' onClick={this.handleOnClick}>x</button>
+      </div>
+    )
+  }
 }
-
 Message.propTypes = {
   message: PropTypes.object.isRequired
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    requestDeleteMessage: (id) => {
+      dispatch(requestDeleteMessage(id))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Message)
