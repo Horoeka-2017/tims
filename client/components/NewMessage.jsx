@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {getPeople} from '../actions'
 import {connect} from 'react-redux'
-import {addMessage} from '../actions'
 
 const styles = {
   borderRadius: '50%',
@@ -61,6 +60,7 @@ class NewMessage extends React.Component {
       this.props.history.push('/')
     })
   }
+
   render () {
     return (
       <div>
