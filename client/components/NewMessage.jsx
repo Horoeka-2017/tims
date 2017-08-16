@@ -67,7 +67,9 @@ class NewMessage extends React.Component {
           <img style={styles} src={this.state.message}/>
           <img style={styles} src={this.state.recipientPhoto}/>
         </div>
-        <Link to='/'> Back to MessageWall </Link>
+        <Link to='/'>
+          <button>Back to MessageWall</button>
+        </Link>
       </div>
     )
   }
