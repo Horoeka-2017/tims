@@ -2,6 +2,13 @@ body {
   background-color: lightblue;
 }
 
+.title{
+  text-align: center;
+}
+.title p {
+  font-style: italic;
+}
+
 .error {
   color: red;
   font-weight: bold;

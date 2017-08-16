@@ -65,6 +65,10 @@ class NewMessage extends React.Component {
   render () {
     return (
       <div>
+        <div className='title'><h1>Welcome To TIMS New Message Form</h1>
+        <h2>Add a new message with the form below</h2>
+        <p>Identify yourself as the sender, select a recipient to send a message too, upload an image and then click submit :)</p>
+        </div>
         <div>
           <select name="sender" onChange={this.handleChange}>
             <option value="sender">Sender</option>
