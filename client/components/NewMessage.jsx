@@ -101,7 +101,6 @@ NewMessage.propTypes = {
   people: React.PropTypes.array
 }
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     getPeople: () => dispatch(getPeople()),
@@ -112,11 +111,10 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
 function mapStateToProps (state) {
   return {
     people: state.people
   }
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(NewMessage)
+export default connect(mapStateToProps, mapDispatchToProps)(NewMessage)
