@@ -1,11 +1,18 @@
 import React from 'react'
+<<<<<<< HEAD
 import { addMessage } from '../actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import people from '../people.js'
+=======
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+
+import {getPeople, addMessage} from '../actions'
+>>>>>>> 511493a161b086eed39ed407d70771b881ff4cc3
 
 class NewMessage extends React.Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       sender: null,
@@ -21,8 +28,12 @@ class NewMessage extends React.Component {
     this.handleAddMessage = this.handleAddMessage.bind(this)
   }
 
-  handleGetPhoto (action, id) {
-    const person = people.find((p) => p.id === Number(id))
+  componentDidMount() {
+    this.props.getPeople()
+  }
+
+  handleGetPhoto(action, id) {
+    const person = this.props.people.find((p) => p.id === Number(id))
 
     if (action === 'sender') {
       this.setState({ senderPhoto: person.photo, sender: person.name, senderId: person.id })
@@ -31,7 +42,7 @@ class NewMessage extends React.Component {
     }
   }
 
-  handleChange (e) {
+  handleChange(e) {
     const { name: action, value: id } = e.target
 
     this.setState({
@@ -40,7 +51,7 @@ class NewMessage extends React.Component {
     this.handleGetPhoto(action, id)
   }
 
-  handleAddMessage (e) {
+  handleAddMessage(e) {
     const message = {
       senderId: this.state.senderId,
       recipientId: this.state.recipientId,
@@ -51,20 +62,20 @@ class NewMessage extends React.Component {
     })
   }
 
-  render () {
+  render() {
     return (
       <div className="newMessageStyle">
         <h1>New Image Message</h1>
         <div className="select-list">
           <select className="sender" name="sender" onChange={this.handleChange}>
             <option value="sender">Sender</option>
-            {people.map((person) => {
+            {this.props.people.map((person) => {
               return <option key={person.id} value={person.id}>{person.name}</option>
             })}
           </select>
           <select className="recipient" name="recipient" onChange={this.handleChange}>
             <option value="recipient">Recipient</option>
-            {people.map((person) => {
+            {this.props.people.map((person) => {
               return <option key={person.id} value={person.id}>{person.name}</option>
             })}
           </select>
@@ -94,12 +105,25 @@ class NewMessage extends React.Component {
   }
 }
 
+NewMessage.propTypes = {
+  getPeople: React.PropTypes.func,
+  people: React.PropTypes.array
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
+    getPeople: () => dispatch(getPeople()),
     addMessage: (message, cb) => {
       dispatch(addMessage(message, cb))
     }
+
   }
 }
 
-export default connect(null, mapDispatchToProps)(NewMessage)
+function mapStateToProps(state) {
+  return {
+    people: state.people
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewMessage)
