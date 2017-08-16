@@ -27,7 +27,10 @@ export function addNewMessage (message) {
 
 function showError (error) {
   // TODO implement this function in redux
-  console.log(error)
+  return {
+    type: 'ERROR',
+    message: error.message
+  }
 }
 
 export function fetchMessages () {
@@ -37,7 +40,7 @@ export function fetchMessages () {
       .get('/api/v1/messages')
       .end((err, res) => {
         if (err) {
-          dispatch(showError(err.message)) // TODO implement showError action
+          dispatch(showError(err)) // TODO implement showError action
         } else {
           dispatch(receiveMessages(res.body))
         }
@@ -45,16 +48,18 @@ export function fetchMessages () {
   }
 }
 
-export function addMessage () {
+export function addMessage (message, cb) {
   return (dispatch) => {
-    dispatch(addMessage())
     request
       .post('/api/v1/new')
+      .send(message)
       .end((err, res) => {
         if (err) {
+          cb(err)
           dispatch(showError(err.message))
         } else {
-          dispatch(addNewMessage(res.body))
+          cb(null)
+          dispatch(fetchMessages())
         }
       })
   }

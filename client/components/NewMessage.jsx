@@ -1,5 +1,6 @@
 import React from 'react'
-
+import {addMessage} from '../actions'
+import {connect} from 'react-redux'
 import people from '../people.js'
 
 const styles = {
@@ -14,22 +15,25 @@ class NewMessage extends React.Component {
     super()
     this.state = {
       sender: null,
+      senderId: null,
       recipient: null,
+      recipientId: null,
       senderPhoto: null,
       recipientPhoto: null,
       message: null
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleGetPhoto = this.handleGetPhoto.bind(this)
+    this.handleAddMessage = this.handleAddMessage.bind(this)
   }
 
   handleGetPhoto (action, id) {
     const person = people.find((p) => p.id === Number(id))
 
     if (action === 'sender') {
-      this.setState({senderPhoto: person.photo})
+      this.setState({senderPhoto: person.photo, sender: person.name, senderId: person.id})
     } else if (action === 'recipient') {
-      this.setState({recipientPhoto: person.photo})
+      this.setState({recipientPhoto: person.photo, sender: person.name, recipientId: person.id})
     }
   }
 
@@ -40,6 +44,17 @@ class NewMessage extends React.Component {
       [action]: id
     })
     this.handleGetPhoto(action, id)
+  }
+
+  handleAddMessage (e) {
+    const message = {
+      senderId: this.state.senderId,
+      recipientId: this.state.recipientId,
+      message: this.state.message
+    }
+    this.props.addMessage(message, () => {
+      this.props.history.push('/')
+    })
   }
   render () {
     return (
@@ -67,10 +82,18 @@ class NewMessage extends React.Component {
           <img style={styles} src={this.state.message}/>
           <img style={styles} src={this.state.recipientPhoto}/>
         </div>
-        <button name="submit">Add Message</button>
+        <button value="submit" onClick={this.handleAddMessage}>Add Message</button>
       </div>
     )
   }
 }
 
-export default NewMessage
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addMessage: (message, cb) => {
+      dispatch(addMessage(message, cb))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NewMessage)
