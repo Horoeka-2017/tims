@@ -41,21 +41,25 @@ class NewMessage extends React.Component {
     })
     this.handleGetPhoto(action, id)
   }
+  // there needs to be another function for an api call to put the data from the form into the databse
   render () {
     return (
       <div>
+        <form action="arglebargle" id="messageForm">
+          <input type="submit"/>
+        </form>
         <div>
-          <select name="sender" onChange={this.handleChange}>
-            <option value="sender">Sender</option>
-              {people.map((person) => {
-                return <option key={person.id} value={person.id}>{person.name}</option>
-              })}
+          <select name="sender" onChange={this.handleChange} form="messageForm" required>
+            <option value="">Sender</option>
+            {people.map((person) => {
+              return <option key={person.id} value={person.id}>{person.name}</option>
+            })}
           </select>
-          <select name="recipient" onChange={this.handleChange}>
+          <select name="recipient" onChange={this.handleChange} required>
             <option value="recipient">Recipient</option>
-              {people.map((person) => {
-                return <option key={person.id} value={person.id}>{person.name}</option>
-              })}
+            {people.map((person) => {
+              return <option key={person.id} value={person.id}>{person.name}</option>
+            })}
           </select>
         </div>
         <label>
