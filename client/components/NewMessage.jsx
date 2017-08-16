@@ -1,7 +1,14 @@
 import React from 'react'
+<<<<<<< HEAD
 import {Link} from 'react-router-dom'
 import {getPeople} from '../actions'
 import {connect} from 'react-redux'
+=======
+import {addMessage} from '../actions'
+import {connect} from 'react-redux'
+import {Route, Link} from 'react-router-dom'
+import people from '../people.js'
+>>>>>>> 7f222859b0b6f38bd26585218747fd4014cafe6f
 
 const styles = {
   borderRadius: '50%',
@@ -15,13 +22,16 @@ class NewMessage extends React.Component {
     super()
     this.state = {
       sender: null,
+      senderId: null,
       recipient: null,
+      recipientId: null,
       senderPhoto: null,
       recipientPhoto: null,
       message: null
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleGetPhoto = this.handleGetPhoto.bind(this)
+    this.handleAddMessage = this.handleAddMessage.bind(this)
   }
 
   componentDidMount () {
@@ -32,9 +42,9 @@ class NewMessage extends React.Component {
     const person = this.props.people.find((p) => p.id === Number(id))
 
     if (action === 'sender') {
-      this.setState({senderPhoto: person.photo})
+      this.setState({senderPhoto: person.photo, sender: person.name, senderId: person.id})
     } else if (action === 'recipient') {
-      this.setState({recipientPhoto: person.photo})
+      this.setState({recipientPhoto: person.photo, sender: person.name, recipientId: person.id})
     }
   }
 
@@ -45,6 +55,17 @@ class NewMessage extends React.Component {
       [action]: id
     })
     this.handleGetPhoto(action, id)
+  }
+
+  handleAddMessage (e) {
+    const message = {
+      senderId: this.state.senderId,
+      recipientId: this.state.recipientId,
+      message: this.state.message
+    }
+    this.props.addMessage(message, () => {
+      this.props.history.push('/')
+    })
   }
   render () {
     return (
@@ -72,6 +93,7 @@ class NewMessage extends React.Component {
           <img style={styles} src={this.state.message}/>
           <img style={styles} src={this.state.recipientPhoto}/>
         </div>
+        <button value="submit" onClick={this.handleAddMessage}>Add Message</button>
         <Link to='/'>
           <button>Back to MessageWall</button>
         </Link>
@@ -85,11 +107,17 @@ NewMessage.propTypes = {
   people: React.PropTypes.array
 }
 
-function matchDispatchToProps (dispatch) {
+
+const mapDispatchToProps = (dispatch) => {
   return {
-    getPeople: () => dispatch(getPeople())
+    getPeople: () => dispatch(getPeople()),
+    addMessage: (message, cb) => {
+      dispatch(addMessage(message, cb))
+    }
+
   }
 }
+
 
 function mapStateToProps (state) {
   return {

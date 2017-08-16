@@ -5,41 +5,49 @@ export const RECEIVE_MESSAGES = 'RECEIVE_POSTS'
 export const REQUEST_MESSAGES = 'REQUEST_MESSAGES'
 export const RECEIVE_PEOPLE = 'RECEIVE_PEOPLE'
 export const REQUEST_PEOPLE = 'REQUEST_PEOPLE'
+export const ADD_MESSAGE = 'ADD_MESSAGE'
 export const SHOW_ERROR = 'SHOW_ERROR'
 
-export function requestMessages() {
+export function requestMessages () {
   return {
     type: REQUEST_MESSAGES
   }
 }
 
-export function receiveMessages(messages) {
+export function receiveMessages (messages) {
   return {
     type: RECEIVE_MESSAGES,
     messages: messages
   }
 }
 
-export function showError(errorMessage) {
+export function addNewMessage (message) {
+  return {
+    type: ADD_MESSAGE,
+    message: message
+  }
+}
+
+export function showError (errorMessage) {
   return {
     type: SHOW_ERROR,
     errorMessage: errorMessage
   }
 }
 
-export function requestPeople() {
+export function requestPeople () {
   return {
     type: REQUEST_PEOPLE
   }
 }
-export function receivePeople(people) {
+export function receivePeople (people) {
   return {
     type: RECEIVE_PEOPLE,
     people: people
   }
 }
 
-export function fetchMessages() {
+export function fetchMessages () {
   return (dispatch) => {
     dispatch(requestMessages())
     request
@@ -54,10 +62,27 @@ export function fetchMessages() {
   }
 }
 
-export function getPeople() {
+export function addMessage (message, cb) {
+  return (dispatch) => {
+    request
+      .post('/api/v1/new')
+      .send(message)
+      .end((err, res) => {
+        if (err) {
+          dispatch(showError(err.message))
+        } else {
+          dispatch(fetchMessages())
+          cb()
+        }
+      })
+  }
+}
+
+export function getPeople () {
   return (dispatch) => {
     dispatch(requestPeople())
-    request.get('/api/v1/people')
+    request
+      .get('/api/v1/people')
       .end((err, res) => {
         if (err) {
           dispatch(showError(err.message))
@@ -67,3 +92,4 @@ export function getPeople() {
       })
   }
 }
+
