@@ -2,6 +2,7 @@ body {
   background-color: lightblue;
   font-family: 'Amatic SC', cursive;
 }
+
 h1 {
   font-family: 'Quattrocento Sans', sans-serif;
 }
@@ -65,17 +66,12 @@ button {
   border: none;
 }
 
-
 /* new message */
-
-
 .message-image{
   border-radius: 25px;
   background-color: white;
   margin-bottom: 65px;
 }
-
-
 
 .person-photo{
   border-radius: 50%;

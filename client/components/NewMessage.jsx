@@ -112,7 +112,6 @@ const mapDispatchToProps = (dispatch) => {
     addMessage: (message, cb) => {
       dispatch(addMessage(message, cb))
     }
-
   }
 }
 
