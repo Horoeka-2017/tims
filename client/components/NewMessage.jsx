@@ -1,14 +1,8 @@
 import React from 'react'
-<<<<<<< HEAD
 import {Link} from 'react-router-dom'
 import {getPeople} from '../actions'
 import {connect} from 'react-redux'
-=======
 import {addMessage} from '../actions'
-import {connect} from 'react-redux'
-import {Route, Link} from 'react-router-dom'
-import people from '../people.js'
->>>>>>> 7f222859b0b6f38bd26585218747fd4014cafe6f
 
 const styles = {
   borderRadius: '50%',
