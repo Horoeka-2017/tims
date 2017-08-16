@@ -3,6 +3,8 @@ import request from 'superagent'
 export const GET_MESSAGES = 'GET_MESSAGES'
 export const RECEIVE_MESSAGES = 'RECEIVE_POSTS'
 export const REQUEST_MESSAGES = 'REQUEST_MESSAGES'
+export const RECEIVE_PEOPLE = 'RECEIVE_PEOPLE'
+export const REQUEST_PEOPLE = 'REQUEST_PEOPLE'
 export const ADD_MESSAGE = 'ADD_MESSAGE'
 export const SHOW_ERROR = 'SHOW_ERROR'
 
@@ -48,6 +50,18 @@ export function showError (errorMessage) {
   }
 }
 
+export function requestPeople () {
+  return {
+    type: REQUEST_PEOPLE
+  }
+}
+export function receivePeople (people) {
+  return {
+    type: RECEIVE_PEOPLE,
+    people: people
+  }
+}
+
 export function fetchMessages () {
   return (dispatch) => {
     dispatch(requestMessages())
@@ -78,3 +92,19 @@ export function addMessage (message, cb) {
       })
   }
 }
+
+export function getPeople () {
+  return (dispatch) => {
+    dispatch(requestPeople())
+    request
+      .get('/api/v1/people')
+      .end((err, res) => {
+        if (err) {
+          dispatch(showError(err.message))
+        } else {
+          dispatch(receivePeople(res.body))
+        }
+      })
+  }
+}
+
