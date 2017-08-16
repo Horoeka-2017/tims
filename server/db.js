@@ -3,7 +3,9 @@ const config = require('../knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-  getMessages, createMessage, getPeople
+  getMessages,
+  createMessage,
+  getPeople
 }
 
 function getMessages (conn) {
