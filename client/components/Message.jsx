@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 
 export default function Message (props) {
   return (
-    <div>
+    <div className='message-container'>
       <Person person={props.message.sender}/>
-      <img src={props.message.imageUrl}/>
+      <img className='message' src={props.message.imageUrl}/>
       <Person person={props.message.recipient}/>
     </div>
   )
