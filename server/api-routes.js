@@ -15,10 +15,11 @@ router.get('/messages', (req, res) => {
 })
 
 router.post('/messages', (req, res) => {
+  console.log('new message', req.body)
   const message = {
     senderId: req.body.senderId,
     recipientId: req.body.recipientId,
-    imageUrl: req.body.imageUrl
+    imageUrl: req.body.message
   }
   db.createMessage(message)
     .then(() => {
@@ -27,21 +28,6 @@ router.post('/messages', (req, res) => {
     .catch(err => {
       res.status(500).send(err.message)
     })
-})
-
-router.post('/new', (req, res) => {
-  const message = {
-    senderId: req.body.senderId,
-    recipientId: req.body.recipientId,
-    imageUrl: req.body.imageUrl
-  }
-  db.createMessage(message)
-  .then(() => {
-    res.status(201).send('Message Added')
-  })
-  .catch(err => {
-    res.status(500).send(err.message)
-  })
 })
 
 router.get('/people', (req, res) => {
