@@ -1,17 +1,21 @@
 import React from 'react'
 
-import ErrorMessage from './ErrorMessage'
-import LoadSubreddit from './LoadSubreddit'
-import SubredditList from './SubredditList'
+import MessageList from './MessageList'
+import {Route} from 'react-router-dom'
+import NewMessage from './NewMessage'
+import LoadMessages from './LoadMessages'
 import WaitIndicator from './WaitIndicator'
+import ErrorMessage from './ErrorMessage'
 
-const App = () => (
-  <div className='app'>
-    <ErrorMessage />
-    <LoadSubreddit />
-    <WaitIndicator />
-    <SubredditList />
-  </div>
-)
-
-export default App
+export default class App extends React.Component {
+  render () {
+    return (
+      <div className='app'>
+        <WaitIndicator />
+        <ErrorMessage />
+        <Route exact path ='/' component={MessageList}/>
+        <Route path='/new' component={NewMessage} />
+      </div>
+    )
+  }
+}
