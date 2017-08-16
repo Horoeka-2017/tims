@@ -3,7 +3,11 @@ import request from 'superagent'
 export const GET_MESSAGES = 'GET_MESSAGES'
 export const RECEIVE_MESSAGES = 'RECEIVE_POSTS'
 export const REQUEST_MESSAGES = 'REQUEST_MESSAGES'
+<<<<<<< HEAD
 export const ADD_MESSAGE = 'ADD_MESSAGE'
+=======
+export const SHOW_ERROR = 'SHOW_ERROR'
+>>>>>>> bf4e55655c11c355f905fbbf2036a823084c8cda
 
 export function requestMessages () {
   return {

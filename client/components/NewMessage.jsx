@@ -1,6 +1,7 @@
 import React from 'react'
 import {addMessage} from '../actions'
 import {connect} from 'react-redux'
+import {Route, Link} from 'react-router-dom'
 import people from '../people.js'
 
 const styles = {
@@ -82,7 +83,13 @@ class NewMessage extends React.Component {
           <img style={styles} src={this.state.message}/>
           <img style={styles} src={this.state.recipientPhoto}/>
         </div>
+<<<<<<< HEAD
         <button value="submit" onClick={this.handleAddMessage}>Add Message</button>
+=======
+        <Link to='/'>
+          <button>Back to MessageWall</button>
+        </Link>
+>>>>>>> bf4e55655c11c355f905fbbf2036a823084c8cda
       </div>
     )
   }
