@@ -12,9 +12,10 @@ function MessageList ({ messages }) {
       <div>
         {messages.map((message, i) => {
           return <Message key={i} message={message} />
-          })
+        })
         }
       </div>
+      <LoadMessages/>
       <Link to='/new'> Create New Message </Link>
     </div>
   )
@@ -24,7 +25,7 @@ MessageList.propTypes = {
   messages: PropTypes.array.isRequired
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     messages: state.messages
   }
